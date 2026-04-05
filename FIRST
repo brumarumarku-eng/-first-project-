@@ -1,0 +1,36 @@
+# -first-project-
+Simple app created to practice programming.
+# Your feature branch workflow
+# ══════════════════════════════════════════════
+
+# Day 1
+git checkout -b feature/payments
+# main: ─────●─────
+
+# Day 2: You commit
+# main: ─────●─────
+# you:  ─────●──●──
+
+# Day 3: Team merges 5 other features to main
+# main: ─────●──●──●──●──●──●
+# you:  ─────●──●──  (diverging!)
+
+# Solution: Rebase NOW
+git rebase origin/main
+# main: ─────●──●──●──●──●──●
+# you:  ─────●──●──●──●──●──●──●──
+
+# Day 4: You continue work
+# main:══════════════════════════════════════════════ ─────●──●──●──●──●──●
+# you:  ─────●──●──●──●──●──●──●──●──# Every 2-3 days, rebase onto latest main
+git fetch origin
+git rebase origin/main
+
+# If conflicts arise, resolve them immediately
+git status
+# Fix conflicts manually
+git add resolved-files══════════════════════════════════════════════
+git rebase --continue
+
+# Force push only to your feature branch (not main!)
+git push origin feature/my-feature --force-with-lease
